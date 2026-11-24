@@ -44,7 +44,7 @@ public:
    void insert(int key, int value);
    void erase(int key);
    int check(int key); // = find()
-   int num();	
+   int size();	
    int size();                        // O(1)
 	bool empty();                      // O(1)
 
@@ -310,7 +310,7 @@ int BSTMap::check(int key) { // find() : value 반환 중 + 10/26 다시 key로 
    }
    return target->key;
 }
-int BSTMap::num() { // size()
+int BSTMap::size() { // size()
    return n;
 }
 int BSTMap::size() {
@@ -384,7 +384,7 @@ int main() {
             cout << s.check(q) << endl;
          }
          else if (name == "num") {
-            cout << s.num() << endl;
+            cout << s.size() << endl;
          }
          else if (name == "height") {
             int q;
