@@ -1,0 +1,45 @@
+# CSE 3210 C++ 스타일 가이드 (Google 스타일 기반)
+---
+Language: Cpp
+BasedOnStyle: Google
+
+# 줄 길이: 80자
+ColumnLimit: 80
+
+# 들여쓰기: 스페이스 2칸, 탭 금지
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+
+# public: / private: 는 1칸 들여쓰기
+AccessModifierOffset: -1
+
+# 포인터/레퍼런스 기호 위치 통일 (const char* p)
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# include 순서: 짝 헤더 -> C -> C++ -> 외부 라이브러리 -> 프로젝트
+# (같은 구역 안에서는 알파벳 순)
+IncludeBlocks: Regroup
+IncludeIsMainRegex: '([-_](test|unittest))?$'
+IncludeCategories:
+  # C 시스템 헤더 중 하위 폴더에 있는 것
+  - Regex: '^<(sys|arpa|netinet|net|linux)/.*\.h>'
+    Priority: 1
+    SortPriority: 1
+  # 외부 라이브러리 (<gtest/gtest.h> 등)
+  - Regex: '^<.*/.*\.(h|hpp)>'
+    Priority: 2
+    SortPriority: 3
+  # C 시스템 헤더
+  - Regex: '^<.*\.h>'
+    Priority: 1
+    SortPriority: 1
+  # C++ 표준 헤더
+  - Regex: '^<.*>'
+    Priority: 1
+    SortPriority: 2
+  # 현재 프로젝트 헤더
+  - Regex: '^".*"'
+    Priority: 3
+    SortPriority: 4
