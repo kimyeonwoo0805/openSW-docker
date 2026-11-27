@@ -1,0 +1,68 @@
+# CSE 3210 C++ 스타일 가이드 중 clang-format이 처리하지 못하는 규칙 검사
+---
+Checks: >
+  -*,
+  readability-identifier-naming,
+  readability-function-size,
+  google-readability-casting,
+  bugprone-switch-missing-default-case,
+  cppcoreguidelines-init-variables,
+  cppcoreguidelines-prefer-member-initializer,
+  cppcoreguidelines-special-member-functions,
+  cppcoreguidelines-avoid-non-const-global-variables,
+  cppcoreguidelines-macro-usage,
+  modernize-loop-convert
+HeaderFilterRegex: '.*'
+CheckOptions:
+  # 함수 40줄 초과 시 경고
+  readability-function-size.LineThreshold: 40
+
+  # Rule of Three
+  cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
+  cppcoreguidelines-special-member-functions.AllowMissingMoveFunctions: true
+
+  cppcoreguidelines-macro-usage.AllowedRegexp: '^DISALLOW_'
+
+  # 타입: MyExcitingClass
+  readability-identifier-naming.ClassCase: CamelCase
+  readability-identifier-naming.StructCase: CamelCase
+  readability-identifier-naming.EnumCase: CamelCase
+  readability-identifier-naming.TypedefCase: CamelCase
+  readability-identifier-naming.TypeAliasCase: CamelCase
+
+  # 변수: my_variable, 클래스 멤버: my_member_
+  readability-identifier-naming.VariableCase: lower_case
+  readability-identifier-naming.VariableIgnoredRegexp: '^k[A-Z][a-zA-Z0-9]*$'
+  readability-identifier-naming.LocalVariableCase: lower_case
+  readability-identifier-naming.LocalVariableIgnoredRegexp: '^k[A-Z][a-zA-Z0-9]*$'
+  readability-identifier-naming.ParameterCase: lower_case
+  readability-identifier-naming.PublicMemberCase: lower_case
+  readability-identifier-naming.PrivateMemberCase: lower_case
+  readability-identifier-naming.PrivateMemberSuffix: _
+  readability-identifier-naming.ProtectedMemberCase: lower_case
+  readability-identifier-naming.ProtectedMemberSuffix: _
+
+  # 전역 변수: g_ 접두어 (권장 사항)
+  readability-identifier-naming.GlobalVariableCase: lower_case
+  readability-identifier-naming.GlobalVariablePrefix: g_
+
+  # 상수: kDaysInAWeek
+  readability-identifier-naming.GlobalConstantCase: CamelCase
+  readability-identifier-naming.GlobalConstantPrefix: k
+  readability-identifier-naming.ConstexprVariableCase: CamelCase
+  readability-identifier-naming.ConstexprVariablePrefix: k
+
+  # 열거형 값: kErrorName 또는 ERROR_NAME
+  readability-identifier-naming.EnumConstantCase: CamelCase
+  readability-identifier-naming.EnumConstantPrefix: k
+  readability-identifier-naming.EnumConstantIgnoredRegexp: '^[A-Z][A-Z0-9_]*$'
+
+  # 함수: AddTableEntry(), 접근자는 소문자 허용
+  readability-identifier-naming.FunctionCase: CamelCase
+  readability-identifier-naming.FunctionIgnoredRegexp: '^(get|set)_[a-z0-9_]+$'
+  readability-identifier-naming.MethodCase: CamelCase
+  readability-identifier-naming.MethodIgnoredRegexp: '^[a-z][a-z0-9_]*$'
+
+  # 네임스페이스, 매크로
+  readability-identifier-naming.NamespaceCase: lower_case
+  readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
